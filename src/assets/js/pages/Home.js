@@ -49,9 +49,11 @@ class Home extends React.Component {
   getPermalink() {
     if (this.props.match.params.index === undefined)
       this.contextValue.index = 1;
-    if (isNaN(this.contextValue.index = parseInt(this.contextValue.index)))
+    this.contextValue.index = parseInt(this.props.match.params.index);
+    if (isNaN(this.contextValue.index))
       this.contextValue.index = 1;
-    if (this.props.match.params.filters === undefined)
+    this.contextValue.textInput = this.props.match.params.filters;
+    if (this.contextValue.textInput === undefined)
       this.contextValue.textInput = '';
     this.contextValue.filters.values = [this.contextValue.textInput]
   }
