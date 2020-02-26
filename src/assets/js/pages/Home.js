@@ -58,7 +58,7 @@ class Home extends React.Component {
     this.contextValue.textInput = this.props.match.params.filters;
     if (this.contextValue.textInput === undefined)
       this.contextValue.textInput = '';
-    this.contextValue.filters.values = [this.contextValue.textInput]
+    this.contextValue.filters[0].values = [this.contextValue.textInput]
   }
 
   reflectURL() {
@@ -77,7 +77,7 @@ class Home extends React.Component {
   }
 
   searchFilters() {
-    this.contextValue.filters.values = [this.contextValue.textInput]
+    this.contextValue.filters[0].values = [this.contextValue.textInput]
     this.contextValue.index = 1;
     this.callAPI();
   }
