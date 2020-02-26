@@ -39,9 +39,12 @@ class Home extends React.Component {
         'filters': this.contextValue.filters
       })
     }).then(response => {
-      response.json().then(data => {
-        this.updateBooks({books: data.books, count: data.count});
-      });
+      if (!response.ok)
+        this.updateBooks({books: {}, count: 0});
+      else
+        response.json().then(data => {
+          this.updateBooks({books: data.books, count: data.count});
+        });
       this.contextValue.waiting = false;
     });
   }
